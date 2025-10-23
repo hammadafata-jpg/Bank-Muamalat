@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Muamalat - Perbankan Syariah</title>
+    <style>
+        /* Sisanya sama seperti sebelumnya */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+        }
+        nav a:hover {
+            color: #d4edda;
+        }
+        .slider {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+        }
+        .slider img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+        .slider img.active {
+            display: block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .welcome-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .login-form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 2px solid #28a745;
+            border-radius: 8px;
+            background-color: #f8f9fa;
+        }
+        input, button {
+            display: block;
+            width: 100%;
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 4px;
+        }
+        input {
+            border: 1px solid #ccc;
+        }
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        .services {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .service {
+            width: 30%;
+            text-align: center;
+            margin: 10px;
+            padding: 20px;
+            border: 1px solid #28a745;
+            border-radius: 8px;
+            background-color: #d4edda;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #28a745;
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Bank Muamalat</div>
+        <nav>
+            <a href="#home">Beranda</a>
+            <a href="#products">Produk</a>
+            <a href="#contact">Kontak</a>
+        </nav>
+    </header>
+    
+    <div class="slider">
+        <!-- Gambar 1: Skyline gedung bank (pemandangan kota dengan gedung tinggi) -->
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Skyline Gedung Bank" class="active">
+        
+        <!-- Gambar 2: Gedung Bank Muamalat (atau mirip, saya cari yang dekat dengan bank Islam) -->
+        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Gedung Bank Muamalat">
+        
+        <!-- Gambar 3: Pemandangan kota (skyline umum) -->
+        <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80" alt="Pemandangan Kota">
+    </div>
+    
+    <div class="container" id="home">
+        <div class="welcome-section">
+            <h2>Selamat Datang di Bank Muamalat</h2>
+            <p>Kami menawarkan layanan perbankan yang sesuai syariah termasuk tabungan, pinjaman, dan investasi.</p>
+        </div>
+        
+        <h3>Masuk ke Akun Anda</h3>
+        <form class="login-form" id="loginForm">
+            <label for="username">Nama Pengguna:</label>
+            <input type="text" id="username" required>
+            
+            <label for="password">Kata Sandi:</label>
+            <input type="password" id="password" required>
+            
+            <button type="submit">Masuk</button>
+        </form>
+        
+        <h3>Layanan Kami</h3>
+        <div class="services">
+            <div class="service">
+                <h4>Akun Tabungan Syariah</h4>
+                <p>Simpan uang Anda dengan prinsip syariah.</p>
+            </div>
+            <div class="service">
+                <h4>Investasi Mudharabah</h4>
+                <p>Tingkatkan kekayaan secara halal.</p>
+            </div>
+            <div class="service">
+                <h4>Pembiayaan Murabahah</h4>
+                <p>Solusi pembiayaan tanpa riba.</p>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <p>&copy; 2023 Bank Muamalat. Semua hak dilindungi undang-undang.</p>
+    </footer>
+
+    <script>
+        // Slider sederhana
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slider img');
+        function showSlide(index) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            slides[index].classList.add('active');
+        }
+        setInterval(() => {
+            currentSlide = (currentSlide + 1) % slides.length;
+            showSlide(currentSlide);
+        }, 3000);
+        
+        // Form login
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            if (username && password) {
+                alert('Login berhasil! (Ini adalah demo)');
+            } else {
+                alert('Harap isi semua kolom.');
+            }
+        });
+    </script>
+</body>
+</html>
